@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danish M - Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #002d72, #00509e);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 2.8em;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 0;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    nav {
+      background: #001f4d;
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .summary {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .summary p {
+      font-size: 1.3em;
+      line-height: 1.8em;
+      color: #444;
+    }
+
+    section {
+      display: none;
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: left;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    h2 {
+      color: #002d72;
+      border-bottom: 2px solid #002d72;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .contact {
+      background: white;
+      color: black;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .contact a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.skill-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card h3 {
+  margin-top: 0;
+  color: #002d72;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #002d72;
+  padding-bottom: 5px;
+}
+
+.skill-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skill-card li::before {
+  content: "✔️";
+  margin-right: 8px;
+  color: green;
+}
+
+.contact {
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+.contact a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.contact a:hover {
+  color: #004baa;
+  transform: scale(1.05);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accordion-btn {
+  background-color: #002d72;
+  color: white;
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.accordion-btn:hover {
+  background-color: #004baa;
+}
+.accordion-content {
+  padding: 0 18px;
+  background-color: #f1f1f1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  border-radius: 0 0 5px 5px;
+  margin-bottom: 10px;
+}
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.accordion-item.active .accordion-content {
+  max-height: 300px; /* Adjust based on content */
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cert-card {
+  background-color: white;
+  color: #002d72;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 45, 114, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 16px rgba(0, 45, 114, 0.25);
+  background-color: #f0f8ff;
+}
+
+.personal-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.personal-toggle {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  background-color: #002d72;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.personal-toggle:hover {
+  background-color: #004baa;
+}
+
+.personal-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  transition: max-height 0.4s ease;
+  background-color: #f9f9f9;
+}
+
+.personal-card.active .personal-content {
+  max-height: 300px;
+  padding: 15px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header with Photo and Title -->
+  <header>
+    <img src="C:\Users\danis\OneDrive\Desktop\dp.jpg" alt="Danish M" />
+    <h1>Danish M</h1>
+    <p>B.Tech - AI & Data Science Student | Sri Krishna College of Technology</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <a onclick="showSection('skills')">Skills</a>
+    <a onclick="showSection('education')">Education</a>
+    <a onclick="showSection('certs')">Certifications</a>
+    <a onclick="showSection('project')">Projects</a>
+    <a onclick="showSection('aicte')">AICTE Event</a>
+    <a onclick="showSection('personal')">Personal</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+
+  <!-- Summary only visible on front -->
+  <div class="summary">
+    <p>
+      Welcome! I'm Danish M, a motivated student of Artificial Intelligence and Data Science.
+      I’m passionate about solving real-world problems using smart technology. Through workshops,
+      coding contests, and hands-on projects, I’ve built a growing skillset in programming,
+      web development, and cloud tools. Scroll through the menu to explore more about me!
+    </p>
+  </div>
+
+  <!-- Hidden Sections Revealed on Click -->
+  <section class="skills animated" id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Programming</h3>
+      <ul>
+        <li>Java</li>
+        <li>C++</li>
+        <li>Python</li>
+        <li>JavaScript</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Web Development</h3>
+      <ul>
+        <li>HTML5 & CSS3</li>
+        <li>Bootstrap</li>
+        <li>React (Basics)</li>
+        <li>Responsive Design</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>AI & Data Science</h3>
+      <ul>
+        <li>Machine Learning</li>
+        <li>Natural Language Processing</li>
+        <li>Scikit-learn</li>
+        <li>TextBlob, LanguageTool</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Database</h3>
+      <ul>
+        <li>SQL</li>
+        <li>MySQL</li>
+        <li>SQLite</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Tools & Platforms</h3>
+      <ul>
+        <li>VS Code</li>
+        <li>Git & GitHub</li>
+        <li>Streamlit</li>
+        <li>Google Colab</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Problem Solving</li>
+        <li>Critical Thinking</li>
+        <li>Public Speaking</li>
+        <li>Team Collaboration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+ <section id="education" class="education animated">
+  <h2>Education</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-btn">Primary School</button>
+      <div class="accordion-content">
+        <p><strong>School:</strong> St. Francis Assisi Matric School</p>
+        <p><strong>Class:</strong> LKG to 6th</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-btn">Middle & High School</button>
+      <div class="accordion-content">
+        <p><strong>School:</strong> The Crescent Matric Higher Secondary School</p>
+        <p><strong>Class:</strong> 7th to 10th</p>
+        <p><strong>Score:</strong> 93.8% in SSLC</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-btn">Higher Secondary School</button>
+      <div class="accordion-content">
+        <p><strong>School:</strong> CEOA Matric Higher Secondary School</p>
+        <p><strong>Class:</strong> 11th & 12th</p>
+        <p><strong>Score:</strong> 90%</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-btn">Undergraduate</button>
+      <div class="accordion-content">
+        <p><strong>Degree:</strong> B.Tech - Artificial Intelligence & Data Science</p>
+        <p><strong>College:</strong> Sri Krishna College of Technology</p>
+        <p><strong>Year of Graduation:</strong> 2028</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <section id="certs" class="certs animated">
+  <h2>Certifications & Workshops</h2>
+  <div class="cert-grid">
+    <div class="cert-card">Introduction to AI</div>
+    <div class="cert-card">Introduction to HTML & HTML5</div>
+    <div class="cert-card">UI/UX for Beginners</div>
+    <div class="cert-card">Project on C++</div>
+    <div class="cert-card">Cloud Computing (STUDAI)</div>
+    <div class="cert-card">Elev8 Workshop on Generative AI</div>
+  </div>
+</section>
+
+
+  <section id="project">
+  <h2>Project Showcase: Smart Autocorrect Tool</h2>
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px;">
+    <div style="flex: 1 1 60%;">
+      <p>
+        I’m excited to share my AI Internship Project – <strong>"Smart Autocorrect Tool"</strong>!
+      </p>
+      <p>
+        Developed during my internship with <strong>Pinnacle Labs</strong> under the <em>Ministry of Corporate Affairs, Government of India</em>, this desktop-based AI-powered tool improves writing by correcting spelling and grammar in real-time.
+      </p>
+      <p><strong>Project Highlights:</strong></p>
+      <ul>
+        <li><strong>Domain:</strong> Artificial Intelligence</li>
+        <li><strong>Tools Used:</strong> Python (Tkinter, TextBlob, LanguageTool)</li>
+        <li><strong>Functionality:</strong></li>
+        <ul>
+          <li>Detects and corrects spelling mistakes using <strong>TextBlob</strong></li>
+          <li>Fixes grammatical errors using <strong>LanguageTool</strong></li>
+          <li>Real-time correction suggestions</li>
+          <li>Clipboard copy feature and user-friendly GUI</li>
+        </ul>
+      </ul>
+      <p>
+        This hands-on project helped me strengthen my skills in AI and NLP by building an interactive tool using Python libraries.
+      </p>
+      <p><strong>Source Code:</strong> <a href="https://github.com/Danish2323/Autocorrect-tool-" target="_blank">Click Here</a></p>
+      <p><strong>Tags:</strong> #AI #Python #Internship #TextBlob #LanguageTool #NLP #AutocorrectTool #PinnacleLabs</p>
+    </div>
+    <div style="flex: 1 1 35%;">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <iframe src="C:\Users\danis\OneDrive\Desktop\pro 2 final.mp4"
+                frameborder="0" allowfullscreen title="Video Demo"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <section id="aicte">
+  <h2>AICTE Event: Empowering Young Minds</h2>
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px;">
+    <div style="flex: 1 1 60%;">
+      <p>
+        I was fortunate to conduct a career guidance program at <strong>Government Kallar Primary School</strong>
+        (அரசு கல்லர் துவக்க பள்ளி) and <strong>Government Kallar Higher Secondary School</strong>
+        (அரசு கல்லர் மேல்நிலைப் பள்ளி) in <strong>Vellaiyammalpuram</strong> (வெள்ளையம்மாள்புரம்), engaging with two different age groups.
+      </p>
+      <p>
+        With the primary school students, the session centered around igniting curiosity and introducing future possibilities through playful, interactive conversations. Their energy and imagination were truly inspiring.
+      </p>
+      <p>
+        With the higher secondary students, I led discussions on modern career choices, skill development, and adaptability in today’s rapidly changing world. We focused on understanding one’s strengths and aligning them with emerging opportunities.
+      </p>
+      <p>
+        This experience reaffirmed my belief in early mentorship as a powerful tool to shape young minds. I’m grateful to the Chairman and Principals of both schools for their support and for allowing me to be part of these students’ journeys.
+      </p>
+      <p><strong>Tags:</strong> #CareerGuidance #Mentorship #AICTE #SKCT #FutureLeaders</p>
+    </div>
+    <div style="flex: 1 1 35%; text-align: center;">
+      <img src="C:\Users\danis\OneDrive\Desktop\aicte.jpg" alt="AICTE Career Guidance Event" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);" />
+    </div>
+  </div>
+</section>
+
+
+<section id="personal" class="personal animated">
+  <h2>Personal Details</h2>
+  <div class="personal-card">
+    <button class="personal-toggle">View Personal Info</button>
+    <div class="personal-content">
+      <ul>
+        <li><strong>Date of Birth:</strong> 23-09-2007</li>
+        <li><strong>Gender:</strong> Male</li>
+        <li><strong>Languages Known:</strong> English, Tamil</li>
+        <li><strong>Location:</strong> Uthamapalayam, Theni</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+ <section id="contact" class="contact animated">
+  <h2 style="color: black;">Contact Me</h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <p style="color: black;"><strong>Email:</strong> <a href="mailto:727824tuad034@skct.edu.in">727824tuad034@skct.edu.in</a></p>
+    <p style="color: black;"><strong>Phone:</strong> <a href="tel:+919940768187">+91 99407 68187</a></p>
+    <p><strong>Location:</strong> Uthamapalayam, Theni</p>
+    <a href="https://www.linkedin.com/in/danish-m-a50325326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="text-decoration: none; color: black;">🔗 LinkedIn Profile</a>
+    <a href="https://github.com/Danish2323" target="_blank" style="text-decoration: none; color:black;">💻 GitHub Profile</a>
+  </div>
+</section>
+
+
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.style.display = 'none';
+      });
+      document.querySelector('.summary').style.display = 'none';
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+
+<script>
+  const buttons = document.querySelectorAll('.accordion-btn');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const parent = button.parentElement;
+      parent.classList.toggle('active');
+    });
+  });
+</script>
+
+<script>
+  const personalBtn = document.querySelector('.personal-toggle');
+  const personalCard = document.querySelector('.personal-card');
+
+  personalBtn.addEventListener('click', () => {
+    personalCard.classList.toggle('active');
+  });
+</script>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
+
+  // Accordion toggle logic
+  document.querySelectorAll('.accordion-btn').forEach(btn => {
+    btn.onclick = function () {
+      const item = this.parentElement;
+      item.classList.toggle('active');
+    };
+  });
+
+  // Personal section toggle
+  const personalToggle = document.querySelector('.personal-toggle');
+  const personalCard = document.querySelector('.personal-card');
+
+  personalToggle.addEventListener('click', () => {
+    personalCard.classList.toggle('active');
+  });
+
+  // Show "Skills" section by default on load
+  window.onload = () => showSection('skills');
+</script>
+
+</body>
+</html>
